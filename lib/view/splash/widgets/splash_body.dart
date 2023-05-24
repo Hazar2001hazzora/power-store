@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:power_store1/main.dart';
+import 'package:power_store1/view/login/login_view.dart';
 
 import '../../../constants/SizeConfig/size_config.dart';
+import '../../HomePage/Bottom Nav Bar/bottom_navigation_bar.dart';
 import '../../OnBoarding/on_boarding_view.dart';
 
 class SplashBody extends StatefulWidget {
@@ -58,7 +61,11 @@ class _SplashBodyState extends State<SplashBody>
 
   void goToNextView() {
     Future.delayed(Duration(seconds: 3), () {
-      Get.to(() => OnBoardingView(), transition: Transition.fade);
-    });
+      if(sharedprefs.getBool("page_after_splash")==true){
+        Get.offAll(()=>bottomNavigationBarScreen());
+      }
+      else{
+      Get.offAll(() => OnBoardingView(), transition: Transition.fade);
+    }});
   }
 }

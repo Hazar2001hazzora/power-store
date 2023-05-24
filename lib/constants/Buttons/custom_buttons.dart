@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../Colors and Fonts/colors.dart';
+import '../SizeConfig/size_config.dart';
+
 class CustomGeneralButton extends StatelessWidget {
   const CustomGeneralButton({required this.text, this.onTap});
   final String? text;
-  final  VoidCallback? onTap;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +35,9 @@ class CustomGeneralButton extends StatelessWidget {
   }
 }
 
-
 class SeeAllButton extends StatelessWidget {
-  const SeeAllButton({required this.text, this.onTap});
-  final String? text;
-  final  VoidCallback? onTap;
+  const SeeAllButton({this.onTap});
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +51,9 @@ class SeeAllButton extends StatelessWidget {
           width: 60,
           child: Center(
             child: Text(
-              text!,
+              'See all',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),
@@ -64,4 +65,187 @@ class SeeAllButton extends StatelessWidget {
     );
   }
 }
+
+class Arrow extends StatelessWidget {
+  const Arrow({this.onTap});
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    return Positioned(
+      right: 250,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          height: 45,
+          width: 250,
+          child: IconButton(
+            onPressed: onTap,
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ArrowBack extends StatelessWidget {
+  const ArrowBack({this.onTap});
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    return Positioned(
+      left: SizeConfig.defaultSize! * 26,
+      top: SizeConfig.defaultSize! * 1.5,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          height: 45,
+          width: 250,
+          child: IconButton(
+            onPressed: onTap,
+            icon: Icon(
+              Icons.arrow_forward,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SaveLocationButton extends StatelessWidget {
+  const SaveLocationButton({this.onTap});
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    return GestureDetector(
+      onTap: onTap,
+      child:Container(
+        child: Center(
+          child: Text(
+            'Save',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+        ),
+        height: 50,
+        width: 80,
+        decoration: BoxDecoration(
+          color: PurpleColor,
+          borderRadius: BorderRadius.circular(20),
+        ),
+      ),
+    );
+  }
+}
+
+
+class AddButton extends StatelessWidget {
+  const AddButton({this.onTap});
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    return GestureDetector(
+      onTap: onTap,
+      child:Container(
+        child: Center(
+          child: Text(
+            'Add Attachments',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+        ),
+        height: 50,
+        width: 170,
+        decoration: BoxDecoration(
+          color: PurpleColor,
+          borderRadius: BorderRadius.circular(20),
+        ),
+      ),
+    );
+  }
+}
+
+
+class SendButton extends StatelessWidget {
+  const SendButton({this.onTap});
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    return GestureDetector(
+      onTap: onTap,
+      child:Container(
+        child: Center(
+          child: Text(
+            'Send',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+        ),
+        height: 50,
+        width: 170,
+        decoration: BoxDecoration(
+          color: PurpleColor,
+          borderRadius: BorderRadius.circular(20),
+        ),
+      ),
+    );
+  }
+}
+
+
+class DoneButton extends StatelessWidget {
+  const DoneButton({this.onTap});
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    return GestureDetector(
+      onTap: onTap,
+      child:Container(
+        child: Center(
+          child: Text(
+            'Done',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+        ),
+        height: 50,
+        width: 170,
+        decoration: BoxDecoration(
+          color: PurpleColor,
+          borderRadius: BorderRadius.circular(20),
+        ),
+      ),
+    );
+  }
+}
+
 

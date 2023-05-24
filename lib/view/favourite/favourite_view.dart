@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:power_store1/constants/Colors%20and%20Fonts/colors.dart';
 
-class DishWasherList extends StatelessWidget {
-  const DishWasherList(
+class FavouriteView extends StatelessWidget {
+  const FavouriteView(
       {required this.image, required this.Title, required this.Discription});
   final String image;
   final String Title;
@@ -18,20 +16,8 @@ class DishWasherList extends StatelessWidget {
         elevation: 7,
         shadowColor: PurpleColor,
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.favorite,
-                color: PurpleColor,
-              ),
-            ),
-            Container(
-              height: 175,
-              width: 175,
-              child: Image.asset(image),
-            ),
+            Image.asset(image),
             SizedBox(
               height: 5,
             ),
@@ -54,6 +40,14 @@ class DishWasherList extends StatelessWidget {
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
                 color: PurpleColor,
+              ),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.delete_forever_outlined,
+                color: PurpleColor,
+                size: 30,
               ),
             ),
           ],

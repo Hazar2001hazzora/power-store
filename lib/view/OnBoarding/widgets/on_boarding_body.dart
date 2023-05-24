@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:power_store1/main.dart';
 
 import '../../../constants/Buttons/custom_buttons.dart';
 import '../../../constants/SizeConfig/size_config.dart';
@@ -61,7 +62,8 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
                 }
                 else
                 {
-                  Get.to( () => LoginView() , transition: Transition.rightToLeft , duration: Duration(milliseconds: 500));
+                  Get.offAll( () => LoginView() , transition: Transition.rightToLeft , duration: Duration(milliseconds: 500));
+                  print(sharedprefs.getString("page"));
                 }
               },
               text:pageController!.hasClients ?  (pageController?.page == 2 ? 'Get Started' : 'Next') : 'Next',

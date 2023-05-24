@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:power_store1/view/Appliances/Fridges/fridge_page.dart';
 
-import '../../constants/Colors and Fonts/colors.dart';
 import '../Appliances/Dish Washer/dish_washer_page.dart';
+import '../Appliances/Washer/washer_page.dart';
 import 'gallery_view.dart';
 
 
@@ -51,9 +51,16 @@ class GalleryList extends StatelessWidget {
             text: 'Home Phone',
             image: 'assets/images/phone2.png',
           ),
-          GalleryView(
-            text: 'Dish Washer',
-            image: 'assets/images/dishWasher.png',
+          GestureDetector(
+            onTap: (){
+              Get.to(() => WasherPage(),
+                  duration: Duration(milliseconds: 500),
+                  transition: Transition.rightToLeft);
+            },
+            child: GalleryView(
+              text: 'Cloths Washer',
+              image: 'assets/images/washer4.png',
+            ),
           ),
           GalleryView(
             text: 'Ovens',

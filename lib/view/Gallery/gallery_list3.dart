@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../constants/Colors and Fonts/colors.dart';
 import 'gallery_view.dart';
 
 class GalleryList3 extends StatelessWidget {

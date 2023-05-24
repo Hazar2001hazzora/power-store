@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:power_store1/constants/Colors%20and%20Fonts/colors.dart';
 
-class FridgeList extends StatelessWidget {
-  const FridgeList(
+class ViewList extends StatelessWidget {
+  const ViewList(
       {required this.image, required this.Title, required this.Discription});
   final String image;
   final String Title;
@@ -18,7 +16,6 @@ class FridgeList extends StatelessWidget {
         elevation: 7,
         shadowColor: PurpleColor,
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             IconButton(
               onPressed: () {},

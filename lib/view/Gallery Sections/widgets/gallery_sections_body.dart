@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:power_store1/view/HomePage/home_page.dart';
-
-import '../../../constants/Colors and Fonts/colors.dart';
+import 'package:power_store1/view/Appliances/Dish%20Washer/dish_washer_page.dart';
+import 'package:power_store1/view/Appliances/Washer/washer_page.dart';
+import '../../../constants/SizeConfig/size_config.dart';
+import '../../Appliances/Blinders/blenders_page.dart';
 import '../../Appliances/Fridges/fridge_page.dart';
+import '../../widgets/appBar/app_Bar.dart';
 import 'gallery_sections_item.dart';
 
 class GallerySectionsBody extends StatelessWidget {
@@ -12,41 +14,10 @@ class GallerySectionsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
-      bottomNavigationBar: NavigationBar(
-        height: 60,
-        destinations: [
-          NavigationDestination(
-            selectedIcon: Icon(Icons.home_outlined),
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.favorite),
-            icon: Icon(
-              Icons.favorite,
-              color: PurpleColor,
-            ),
-            label: 'Favourit',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.category_outlined),
-            icon: Icon(Icons.category_outlined),
-            label: 'Categorys',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.account_box_rounded),
-            icon: Icon(Icons.account_box_rounded),
-            label: 'My Profile',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.shopping_cart_checkout_rounded),
-            icon: Icon(Icons.shopping_cart_checkout_rounded),
-            label: 'My Cart',
-          ),
-        ],
-      ),
-      appBar: myAppBar(),
+
+      appBar: myAppBar(Title: 'Appliances'),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -76,9 +47,16 @@ class GallerySectionsBody extends StatelessWidget {
             ),
             Row(
               children: [
-                GallerySectionsItem(
-                  image: 'assets/images/washing.png',
-                  Title: 'Cloths Washers',
+                GestureDetector(
+                  onTap: (){
+                    Get.to(() => WasherPage(),
+                        duration: Duration(milliseconds: 500),
+                        transition: Transition.rightToLeft);
+                  },
+                  child: GallerySectionsItem(
+                    image: 'assets/images/washing.png',
+                    Title: 'Cloths Washers',
+                  ),
                 ),
                 SizedBox(
                   width: 40,
@@ -98,17 +76,31 @@ class GallerySectionsBody extends StatelessWidget {
                 SizedBox(
                   width: 40,
                 ),
-                GallerySectionsItem(
-                  image: 'assets/images/blender1.png',
-                  Title: 'Blenders',
+                GestureDetector(
+                  onTap: (){
+                    Get.to(() => BlenderPage(),
+                        duration: Duration(milliseconds: 500),
+                        transition: Transition.rightToLeft);
+                  },
+                  child: GallerySectionsItem(
+                    image: 'assets/images/blender1.png',
+                    Title: 'Blenders',
+                  ),
                 ),
               ],
             ),
             Row(
               children: [
-                GallerySectionsItem(
-                  image: 'assets/images/dishWasher.png',
-                  Title: 'Dish Washer',
+                GestureDetector(
+                  onTap: (){
+                    Get.to(() => DishWasherPage(),
+                        duration: Duration(milliseconds: 500),
+                        transition: Transition.rightToLeft);
+                  },
+                  child: GallerySectionsItem(
+                    image: 'assets/images/dishWasher.png',
+                    Title: 'Dish Washer',
+                  ),
                 ),
                 SizedBox(
                   width: 40,
@@ -122,38 +114,9 @@ class GallerySectionsBody extends StatelessWidget {
           ],
         ),
       ),
+
+
     );
   }
 
-  AppBar myAppBar() {
-    return AppBar(
-      elevation: 10,
-      //automaticallyImplyLeading: false,
-      backgroundColor: PurpleColor,
-      leading: BackButton(
-        onPressed: () {
-          Get.to(() => HomePage(),
-              duration: Duration(milliseconds: 500),
-              transition: Transition.rightToLeft);
-        },
-        color: Colors.white,
-      ),
-      title: Center(
-        child: Text(
-          'Power Store',
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.white,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
-      ),
-      actions: [
-        IconButton(
-          icon: Icon(Icons.search),
-          onPressed: () {},
-        ),
-      ],
-    );
-  }
 }

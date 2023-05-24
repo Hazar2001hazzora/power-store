@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:power_store1/controller/login_controller.dart';
 import '../../../constants/Colors and Fonts/colors.dart';
 import '../../../constants/TextFeild/custom_text_field.dart';
 
 
 
 class LoginItem extends StatelessWidget {
-  const LoginItem({required this.text , this.inputType , this.maxLines});
+   LoginItem({required this.text});
   final String text;
-  final TextInputType? inputType;
-  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +27,7 @@ class LoginItem extends StatelessWidget {
           textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
           textAlign: TextAlign.center,
         ),
-        CustomTextField(
-          maxLines: maxLines,
-          inputType: inputType,
-        ),
+
       ],
     );
   }
