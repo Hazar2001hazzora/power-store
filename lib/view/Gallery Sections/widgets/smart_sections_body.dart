@@ -45,7 +45,7 @@ class SmartSectionsBody extends StatelessWidget {
                   ),
                   GallerySectionsItem(
                     image: 'assets/images/labtop.png',
-                    Title: 'LabTop',
+                    Title: 'Lab',
                   ),
                 ],
               ),
