@@ -45,7 +45,7 @@ class FavouriteView extends StatelessWidget {
             IconButton(
               onPressed: () {},
               icon: Icon(
-                Icons.delete_forever_outlined,
+                Icons.heart_broken_rounded,
                 color: PurpleColor,
                 size: 30,
               ),
