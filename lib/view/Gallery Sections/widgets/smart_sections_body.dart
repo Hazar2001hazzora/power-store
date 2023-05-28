@@ -38,7 +38,7 @@ class SmartSectionsBody extends StatelessWidget {
                       },
                       child: GallerySectionsItem(
                         image: 'assets/images/mobile.png',
-                        Title: 'Mob',
+                        Title: 'Mobile',
                       )),
                   SizedBox(
                     width: SizeConfig.defaultSize! * 1.5,
