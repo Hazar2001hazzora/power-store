@@ -10,7 +10,7 @@ void main() async{
    sharedprefs = await SharedPreferences.getInstance();
   runApp(PowerStore());
 }
-//refrf
+//rrf
 class PowerStore extends StatelessWidget {
   PowerStore({Key? key});
 
