@@ -21,7 +21,7 @@ Widget ListCompanies({required text}) {
           top: 10,
           child: Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -32,7 +32,7 @@ Widget ListCompanies({required text}) {
           right: 90,
           child: IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.delete_forever_rounded,
               color: Colors.white,
             ),
