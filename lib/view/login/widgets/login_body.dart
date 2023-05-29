@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:power_store1/main.dart';
 import 'package:power_store1/view/HomePage/Bottom%20Nav%20Bar/bottom_navigation_bar.dart';
+import 'package:power_store1/view/register/register.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../constants/Buttons/custom_buttons.dart';
 import '../../../constants/Buttons/default_button.dart';
@@ -128,13 +129,25 @@ class _LoginBodyState extends State<LoginBody> {
                     // fetchData();
                     if (moveToPage)
                       Get.offAll(
-                        () => bottomNavigationBarScreen(),
+                            () => bottomNavigationBarScreen(),
                         transition: Transition.rightToLeft,
                         duration: Duration(milliseconds: 500),
                       );
                     moveToPage = false;
                   },
                   text: 'Sign In'),
+              Padding(
+                padding: const EdgeInsets.only(top: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Don't you have an Account?"),
+                    TextButton(onPressed: (){
+                      Get.to(Register());
+                    }, child: Text("Register now!!")),
+                  ],
+                ),
+              ),
               SizedBox(height: 80),
               Text(
                 'Complete With Google',

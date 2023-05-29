@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:power_store1/view/Admin/admin_profile.dart';
+import 'package:power_store1/view/Register/register.dart';
 import 'package:power_store1/view/Seller/Navigation%20Bar/bottom_nav_seller.dart';
+import 'package:power_store1/view/splash/splash_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 late SharedPreferences sharedprefs;
@@ -18,7 +21,9 @@ class PowerStore extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-     home: bottomNavigationBarSellerScreen(),
+      //home: bottomNavigationBarSellerScreen(),
+      //home: Register(),
+      home: AdminProfile(),
       theme: ThemeData(
         primarySwatch: Colors.purple, // Set the accent color
       ),

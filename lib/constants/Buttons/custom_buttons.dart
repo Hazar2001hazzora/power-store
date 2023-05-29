@@ -249,3 +249,35 @@ class DoneButton extends StatelessWidget {
 }
 
 
+class AddProductButton extends StatelessWidget {
+  const AddProductButton({this.onTap});
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    return GestureDetector(
+      onTap: onTap,
+      child:Container(
+        child: Center(
+          child: Text(
+            'Add Product',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
+          ),
+        ),
+        height: 40,
+        width: 160,
+        decoration: BoxDecoration(
+          color: PurpleColor,
+          borderRadius: BorderRadius.circular(20),
+        ),
+      ),
+    );
+  }
+}
+
+
