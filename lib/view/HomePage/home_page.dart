@@ -6,7 +6,8 @@ import 'package:power_store1/view/HomePage/section_rows/section_rows.dart';
 import 'package:power_store1/view/HomePage/section_titles/section_titles.dart';
 import '../../constants/Buttons/custom_buttons.dart';
 import '../../constants/SizeConfig/size_config.dart';
-import '../Companys/companys.dart';
+import '../Companys/companies_view.dart';
+import '../Companys/companys_body.dart';
 import '../Gallery Sections/widgets/personal_sections_body.dart';
 import '../Gallery/gallery_company.dart';
 import '../Gallery/gallery_list.dart';
@@ -113,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SeeAllButton(
                   onTap: () {
-                    Get.to(() => Companies(),
+                    Get.to(() =>CompaniesBody(),
                         duration: Duration(milliseconds: 500),
                         transition: Transition.rightToLeft);
                   },

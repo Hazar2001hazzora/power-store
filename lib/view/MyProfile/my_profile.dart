@@ -5,6 +5,8 @@ import 'package:power_store1/view/MyProfile/Privacy/privacy_policy.dart';
 import 'package:power_store1/view/MyProfile/Terms/terms_conditions.dart';
 import '../../constants/Buttons/custom_buttons.dart';
 import '../../constants/SizeConfig/size_config.dart';
+import '../../main.dart';
+import '../splash/splash_view.dart';
 import 'Edit Profile/edit_profile.dart';
 import 'About Power Store/about_power_store.dart';
 import 'Call Us/call_us.dart';
@@ -428,7 +430,18 @@ class MyProfile extends StatelessWidget {
                     Positioned(
                       left: 240,
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.defaultDialog(
+                            title:"Warning!",
+                            middleText: "Are you sure you wanna log out?",
+                            textConfirm: "Log out",
+                            onConfirm:(){
+                              sharedprefs.setBool('page_after_splash',false);
+                              Get.offAll(SplashView());
+                            },
+                            textCancel: "Cancel",
+                          );
+                        },
                         icon: Icon(
                           Icons.logout_outlined,
                           color: Colors.red,
