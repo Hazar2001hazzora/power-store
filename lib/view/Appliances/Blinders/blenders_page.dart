@@ -8,13 +8,6 @@ import '../../HomePage/home_page.dart';
 import '../../widgets/appBar/app_Bar.dart';
 import '../view_list.dart';
 
-
-
-
-
-
-
-
 class BlenderPage extends StatelessWidget {
   const BlenderPage({Key? key}) : super(key: key);
 
@@ -31,6 +24,7 @@ class BlenderPage extends StatelessWidget {
                   image: 'assets/images/blender1.png',
                   Title: 'براد الحافظ',
                   Discription: 'تبريد هوائي',
+                  onTap: (){},
                 ),
                 SizedBox(
                   width: 5,
@@ -39,6 +33,7 @@ class BlenderPage extends StatelessWidget {
                   image: 'assets/images/blender2.png',
                   Title: 'Star Away برادات',
                   Discription: 'تبريد مائي',
+                  onTap: (){},
                 ),
               ],
             ),
@@ -51,6 +46,7 @@ class BlenderPage extends StatelessWidget {
                   image: 'assets/images/blender3.png',
                   Title: 'Fridge',
                   Discription: 'Hellooooo',
+                  onTap: (){},
                 ),
                 SizedBox(
                   width: 5,
@@ -59,6 +55,7 @@ class BlenderPage extends StatelessWidget {
                   image: 'assets/images/blender4.png',
                   Title: 'Heloo',
                   Discription: 'Hellooooo',
+                  onTap: (){},
                 ),
               ],
             ),

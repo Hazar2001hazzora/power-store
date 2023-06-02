@@ -43,9 +43,16 @@ class MyProfile extends StatelessWidget {
                 Positioned(
                   top: 15,
                   left: 305,
-                  child: CircleAvatar(
-                    radius: 35,
-                    backgroundImage: AssetImage('assets/images/avatar.png'),
+                  child: GestureDetector(
+                    onTap: (){
+                      Get.to(() => EditProfile(),
+                          duration: Duration(milliseconds: 500),
+                          transition: Transition.rightToLeft);
+                    },
+                    child: CircleAvatar(
+                      radius: 35,
+                      backgroundImage: AssetImage('assets/images/avatar.png'),
+                    ),
                   ),
                 ),
                 Positioned(

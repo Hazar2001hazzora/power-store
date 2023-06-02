@@ -54,7 +54,7 @@ class GallerySectionsBody extends StatelessWidget {
                         transition: Transition.rightToLeft);
                   },
                   child: GallerySectionsItem(
-                    image: 'assets/images/washing.png',
+                    image: 'assets/images/washer2.png',
                     Title: 'Cloths Washers',
                   ),
                 ),
@@ -62,7 +62,7 @@ class GallerySectionsBody extends StatelessWidget {
                   width: 40,
                 ),
                 GallerySectionsItem(
-                  image: 'assets/images/oven.png',
+                  image: 'assets/images/oven3.png',
                   Title: 'Kitchen Ovens',
                 ),
               ],
@@ -83,7 +83,7 @@ class GallerySectionsBody extends StatelessWidget {
                         transition: Transition.rightToLeft);
                   },
                   child: GallerySectionsItem(
-                    image: 'assets/images/blender1.png',
+                    image: 'assets/images/blender2.png',
                     Title: 'Blenders',
                   ),
                 ),

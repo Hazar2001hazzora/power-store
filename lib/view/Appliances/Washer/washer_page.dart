@@ -24,6 +24,7 @@ class WasherPage extends StatelessWidget {
                   image: 'assets/images/washer1.png',
                   Title: 'براد الحافظ',
                   Discription: 'تبريد هوائي',
+                  onTap: (){},
                 ),
                 SizedBox(
                   width: 5,
@@ -32,6 +33,7 @@ class WasherPage extends StatelessWidget {
                   image: 'assets/images/washer2.png',
                   Title: 'Star Away برادات',
                   Discription: 'تبريد مائي',
+                  onTap: (){},
                 ),
               ],
             ),
@@ -44,6 +46,7 @@ class WasherPage extends StatelessWidget {
                   image: 'assets/images/washer3.png',
                   Title: 'Fridge',
                   Discription: 'Hellooooo',
+                  onTap: (){},
                 ),
                 SizedBox(
                   width: 5,
@@ -52,6 +55,7 @@ class WasherPage extends StatelessWidget {
                   image: 'assets/images/washer4.png',
                   Title: 'Heloo',
                   Discription: 'Hellooooo',
+                  onTap: (){},
                 ),
               ],
             ),
