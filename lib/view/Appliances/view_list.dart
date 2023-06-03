@@ -3,12 +3,14 @@ import 'package:power_store1/constants/Colors%20and%20Fonts/colors.dart';
 
 class ViewList extends StatelessWidget {
   const ViewList(
-      {required this.image, required this.Title, required this.Discription , required this.onTap});
+      {required this.image,
+      required this.Title,
+      required this.Discription,
+      required this.onTap});
   final String image;
   final String Title;
   final String Discription;
   final VoidCallback? onTap;
-
 
   @override
   Widget build(BuildContext context) {

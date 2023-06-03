@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../widgets/appBar/app_Bar.dart';
 
-class Profits extends StatelessWidget {
-  const Profits({Key? key}) : super(key: key);
+class Activities extends StatelessWidget {
+  const Activities({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar(Title: 'Profits'),
+      appBar: myAppBar(Title: 'Activities'),
+
     );
   }
 }

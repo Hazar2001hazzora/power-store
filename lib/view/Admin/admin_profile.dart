@@ -3,15 +3,13 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:power_store1/view/Admin/products.dart';
 import 'package:power_store1/view/Admin/profits.dart';
-
-import '../../../constants/Buttons/custom_buttons.dart';
-import '../../../constants/Colors and Fonts/colors.dart';
 import '../../../constants/SizeConfig/size_config.dart';
-import '../../../constants/TextFeild/edit_profile.dart';
 import '../widgets/appBar/app_Bar.dart';
+import 'activities.dart';
 import 'admin_view.dart';
 import 'edit_admin.dart';
 import 'edit_companies.dart';
+import 'members.dart';
 
 class AdminProfile extends StatelessWidget {
   const AdminProfile({Key? key}) : super(key: key);
@@ -35,7 +33,11 @@ class AdminProfile extends StatelessWidget {
                       duration: Duration(milliseconds: 500),
                       transition: Transition.rightToLeft);
                 }),
-                AdminView(text: 'Members', onTap: () {}),
+                AdminView(text: 'Members', onTap: () {
+                  Get.to(() => Members(),
+                      duration: Duration(milliseconds: 500),
+                      transition: Transition.rightToLeft);
+                }),
               ],
             ),
             Row(
@@ -65,7 +67,11 @@ class AdminProfile extends StatelessWidget {
                       duration: Duration(milliseconds: 500),
                       transition: Transition.rightToLeft);
                 }),
-                AdminView(text: 'Activities', onTap: () {}),
+                AdminView(text: 'Activities', onTap: () {
+                  Get.to(() => Activities(),
+                      duration: Duration(milliseconds: 500),
+                      transition: Transition.rightToLeft);
+                }),
               ],
             ),
           ],

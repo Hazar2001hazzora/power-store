@@ -410,52 +410,66 @@ class MyProfile extends StatelessWidget {
                 SizedBox(
                   height: 5,
                 ),
-                Stack(
-                  children: [
-                    Center(
-                      child: Container(
-                        width: 400,
-                        height: 45,
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(20),
+                GestureDetector(
+                  onTap: (){
+                    Get.defaultDialog(
+                      title:"Warning!",
+                      middleText: "Are you sure you want to log out?",
+                      textConfirm: "Log out",
+                      onConfirm:(){
+                        sharedprefs.setBool('page_after_splash',false);
+                        Get.offAll(SplashView());
+                      },
+                      textCancel: "Cancel",
+                    );
+                  },
+                  child: Stack(
+                    children: [
+                      Center(
+                        child: Container(
+                          width: 400,
+                          height: 45,
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      top: 12,
-                      left: 180,
-                      child: Text(
-                        'Log Out',
-                        style: TextStyle(
-                          color: Colors.red,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20,
+                      Positioned(
+                        top: 12,
+                        left: 180,
+                        child: Text(
+                          'Log Out',
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      left: 240,
-                      child: IconButton(
-                        onPressed: () {
-                          Get.defaultDialog(
-                            title:"Warning!",
-                            middleText: "Are you sure you wanna log out?",
-                            textConfirm: "Log out",
-                            onConfirm:(){
-                              sharedprefs.setBool('page_after_splash',false);
-                              Get.offAll(SplashView());
-                            },
-                            textCancel: "Cancel",
-                          );
-                        },
-                        icon: Icon(
-                          Icons.logout_outlined,
-                          color: Colors.red,
+                      Positioned(
+                        left: 240,
+                        child: IconButton(
+                          onPressed: () {
+                            Get.defaultDialog(
+                              title:"Warning!",
+                              middleText: "Are you sure you want to log out?",
+                              textConfirm: "Log out",
+                              onConfirm:(){
+                                sharedprefs.setBool('page_after_splash',false);
+                                Get.offAll(SplashView());
+                              },
+                              textCancel: "Cancel",
+                            );
+                          },
+                          icon: Icon(
+                            Icons.logout_outlined,
+                            color: Colors.red,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
