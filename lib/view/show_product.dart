@@ -27,21 +27,21 @@ class _ShowProductState extends State<ShowProduct> {
                 elevation: 10,
                 shadowColor: PurpleColor,
                 child: Container(
-                  height: 270,
-                  width: 350,
+                  height: 250,
+                  width: 320,
                   child: Image.asset('assets/images/fridge1.png'),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 32, right: 20),
+              padding: const EdgeInsets.only(left: 40, right: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     'Al Hafiz Fridge',
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 20,
                       color: PurpleColor,
                       fontWeight: FontWeight.bold,
                     ),
@@ -67,11 +67,49 @@ class _ShowProductState extends State<ShowProduct> {
               height: 10,
             ),
             Padding(
+              padding: const EdgeInsets.only(left: 40),
+              child: Row(
+                children: [
+                  Text(
+                    'Company:',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: PurpleColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    'Al Hafiz',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Divider(
+              color: PurpleColor,
+              height: 10,
+              thickness: 1,
+              indent: 20,
+              endIndent: 20,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
               padding: const EdgeInsets.only(right: 230),
               child: Text(
                 'Description: ',
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 20,
                   color: PurpleColor,
                   fontWeight: FontWeight.bold,
                 ),
@@ -81,21 +119,11 @@ class _ShowProductState extends State<ShowProduct> {
               height: 10,
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 250),
+              padding: const EdgeInsets.only(right: 230),
               child: Text(
                 'Air Cooling',
                 style: TextStyle(
-                  fontSize: 22,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 250),
-              child: Text(
-                'Two Doors',
-                style: TextStyle(
-                  fontSize: 22,
+                  fontSize: 20,
                   color: Colors.black,
                 ),
               ),
@@ -103,9 +131,19 @@ class _ShowProductState extends State<ShowProduct> {
             Padding(
               padding: const EdgeInsets.only(right: 230),
               child: Text(
+                'Two Doors',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 210),
+              child: Text(
                 'Tow Drawers',
                 style: TextStyle(
-                  fontSize: 22,
+                  fontSize: 20,
                   color: Colors.black,
                 ),
               ),
@@ -125,7 +163,7 @@ class _ShowProductState extends State<ShowProduct> {
               child: Text(
                 'Available Colors: ',
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 20,
                   color: PurpleColor,
                   fontWeight: FontWeight.bold,
                 ),
@@ -135,9 +173,9 @@ class _ShowProductState extends State<ShowProduct> {
               height: 10,
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 290),
+              padding: const EdgeInsets.only(right: 260),
               child: Container(
-                height: 40,
+                height: 30,
                 decoration: BoxDecoration(
                   color: Colors.black,
                   shape: BoxShape.circle,
@@ -148,9 +186,9 @@ class _ShowProductState extends State<ShowProduct> {
               height: 5,
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 290),
+              padding: const EdgeInsets.only(right: 260),
               child: Container(
-                height: 40,
+                height: 30,
                 decoration: BoxDecoration(
                   color: Colors.grey,
                   shape: BoxShape.circle,
@@ -177,7 +215,7 @@ class _ShowProductState extends State<ShowProduct> {
                   Text(
                     'Price:',
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 20,
                       color: PurpleColor,
                       fontWeight: FontWeight.bold,
                     ),
@@ -188,7 +226,7 @@ class _ShowProductState extends State<ShowProduct> {
                   Text(
                     '3,500,000  S.P',
                     style: TextStyle(
-                      fontSize: 22,
+                      fontSize: 20,
                       color: Colors.black,
                     ),
                   ),

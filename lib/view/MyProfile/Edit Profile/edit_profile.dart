@@ -6,6 +6,7 @@ import '../../../constants/Buttons/custom_buttons.dart';
 import '../../../constants/Colors and Fonts/colors.dart';
 import '../../../constants/SizeConfig/size_config.dart';
 import '../../../constants/TextFeild/edit_profile.dart';
+import '../../../constants/TextFeild/location_text_field.dart';
 import '../my_profile.dart';
 
 class EditProfile extends StatelessWidget {
@@ -52,7 +53,7 @@ class EditProfile extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 10,
+              height: 30,
             ),
             Stack(
               children: [
@@ -87,7 +88,7 @@ class EditProfile extends StatelessWidget {
               inputType: TextInputType.text,
               onChanged: (String value) {},
               validator: (value) {},
-              text: 'First Name',
+              text: 'First Name:',
             ),
             SizedBox(
               height: 10,
@@ -96,7 +97,7 @@ class EditProfile extends StatelessWidget {
               inputType: TextInputType.text,
               onChanged: (String value) {},
               validator: (value) {},
-              text: 'Second Name',
+              text: 'Second Name:',
             ),
             SizedBox(
               height: 10,
@@ -105,13 +106,21 @@ class EditProfile extends StatelessWidget {
               inputType: TextInputType.phone,
               onChanged: (String value) {},
               validator: (value) {},
-              text: 'Phone Number',
+              text: 'Phone Number:',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            LocationTextFeild(
+              inputType: TextInputType.text,
+              onChanged: (String value) {},
+              validator: (value) {},
+              text: 'Your Location:',
             ),
             SizedBox(
               height: 30,
             ),
             DoneButton(),
-
           ],
         ),
       ),
