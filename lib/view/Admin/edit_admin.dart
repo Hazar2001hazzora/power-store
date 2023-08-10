@@ -1,57 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-import '../../../constants/Buttons/custom_buttons.dart';
-import '../../../constants/Colors and Fonts/colors.dart';
-import '../../../constants/SizeConfig/size_config.dart';
-import '../../../constants/TextFeild/edit_profile.dart';
-import '../../../constants/TextFeild/location_text_field.dart';
-import '../my_profile.dart';
+import '../../constants/Buttons/custom_buttons.dart';
+import '../../constants/Colors and Fonts/colors.dart';
+import '../../constants/SizeConfig/size_config.dart';
+import '../../constants/TextFeild/edit_profile.dart';
+import '../widgets/appBar/app_Bar.dart';
 
-class EditProfile extends StatelessWidget {
-  const EditProfile({Key? key}) : super(key: key);
+class EditAdmin extends StatelessWidget {
+  const EditAdmin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+      appBar: myAppBar(Title: 'Edit Admin'),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: 30,
-            ),
-            Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Container(
-                    width: SizeConfig.screenWidth,
-                    height: 45,
-                  ),
-                ),
-                Positioned(
-                  top: SizeConfig.defaultSize! * 2.5,
-                  left: SizeConfig.defaultSize! * 26,
-                  child: Text(
-                    ': Edit Profile  ',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                ArrowBack(
-                  onTap: () {
-                    Get.to(() => MyProfile(),
-                        duration: Duration(milliseconds: 500),
-                        transition: Transition.rightToLeft);
-                  },
-                ),
-              ],
-            ),
             SizedBox(
               height: 30,
             ),
@@ -88,9 +53,17 @@ class EditProfile extends StatelessWidget {
               inputType: TextInputType.text,
               onChanged: (String value) {},
               validator: (value) {},
-              text: 'Name:',
+              text: 'First Name:',
             ),
-
+            SizedBox(
+              height: 10,
+            ),
+            EditName(
+              inputType: TextInputType.text,
+              onChanged: (String value) {},
+              validator: (value) {},
+              text: 'Second Name:',
+            ),
             SizedBox(
               height: 10,
             ),
@@ -103,16 +76,17 @@ class EditProfile extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            LocationTextFeild(
-              inputType: TextInputType.text,
+            EditName(
+              inputType: TextInputType.emailAddress,
               onChanged: (String value) {},
               validator: (value) {},
-              text: 'Your Location:',
+              text: 'Email:',
             ),
             SizedBox(
               height: 30,
             ),
             DoneButton(),
+
           ],
         ),
       ),

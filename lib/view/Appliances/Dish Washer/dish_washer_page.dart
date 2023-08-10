@@ -24,6 +24,7 @@ class DishWasherPage extends StatelessWidget {
                   image: 'assets/images/dish1.png',
                   Title: ' غسالة صحون الحافظ',
                   Discription: 'حرارة عالية',
+                  onTap: (){},
                 ),
                 SizedBox(
                   width: 5,
@@ -32,6 +33,7 @@ class DishWasherPage extends StatelessWidget {
                   image: 'assets/images/dish2.png',
                   Title: 'غسالة صحون LG',
                   Discription: 'غسيل و تنشيف بنفس الوقت',
+                  onTap: (){},
                 ),
               ],
             ),
@@ -44,6 +46,7 @@ class DishWasherPage extends StatelessWidget {
                   image: 'assets/images/dish3.png',
                   Title: ' غسالة SAMSUNG',
                   Discription: 'طبقتان Stainless Steel',
+                  onTap: (){},
                 ),
                 SizedBox(
                   width: 5,
@@ -52,6 +55,7 @@ class DishWasherPage extends StatelessWidget {
                   image: 'assets/images/dish4.png',
                   Title: 'غسالة Star Away',
                   Discription: 'مقاومة للصدأ',
+                  onTap: (){},
                 ),
               ],
             ),

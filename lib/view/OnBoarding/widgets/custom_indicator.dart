@@ -8,7 +8,7 @@ import '../../../constants/Colors and Fonts/colors.dart';
 class CustomIndicator extends StatelessWidget {
   const CustomIndicator({required this.dotIndex}) ;
 
-  final double? dotIndex;
+  final int? dotIndex;
 
   @override
   Widget build(BuildContext context) {

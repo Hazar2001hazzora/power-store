@@ -46,7 +46,7 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
           right: 0,
           bottom: SizeConfig.defaultSize! * 19,
           child: CustomIndicator(
-            dotIndex: pageController!.hasClients ? pageController?.page : 0 ,
+            dotIndex: (pageController!.hasClients ? pageController?.page : 0)!.toInt() ,
           ),
         ),
         Positioned(

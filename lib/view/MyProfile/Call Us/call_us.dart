@@ -61,112 +61,58 @@ class _CallUsState extends State<CallUs> {
                 ),
               ],
             ),
-            Text(
-              'Enter Your Email:',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            CustomTextField(
-              controller: emailcont,
-              maxLines: widget.maxLines,
-              inputType: TextInputType.emailAddress,
-              prefix: Icons.email,
-              onChanged: (Value) {
-                print(Value);
-              },
-              validator: (Value) {
-                if (Value.isEmpty) {
-                  return "please enter your Email Adress";
-                }
-                return null;
-              },
-              text: 'Email Adress',
-            ),
             SizedBox(
               height: 30,
             ),
-            Text(
-              'How We Can Help You ?',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            HelpTextFeild(
-              inputType: TextInputType.text,
-              onChanged: (String value) {},
-              validator: (value) {},
-              text: 'Type here :',
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            AddButton(
-              onTap: () {},
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            SendButton(),
-            SizedBox(
-              height: 25,
-            ),
-            Divider(
-              color: PurpleColor,
-              height: 10,
-              thickness: 2,
-              indent: 20,
-              endIndent: 20,
-            ),
-            Text(
-              'Information About Power Store',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 10,),
             Padding(
               padding: const EdgeInsets.all(10),
-              child: Text('Location: Damascus , Al Mazzeh , Power Store Building',
+              child: Text(
+                'Dear subscriber, if you want to contact us, inform us of a problem, or inquire about more details, you can communicate via the information below :',
+                style: TextStyle(
+                  color: PurpleColor,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                'Phone: 0938367851  -  0932337865 - 0112113367',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.black,
                 ),
               ),
             ),
-            SizedBox(height: 10,),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text('Contact Us: 0938367851  -  0932337865 - 0112113367',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                ),
-              ),
+            SizedBox(
+              height: 20,
             ),
-            SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.only(right: 105),
-              child: Text('Our Email:  power.store@gmail.com',
+              child: Text(
+                'Our Email:  power.store@gmail.com',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.black,
                 ),
               ),
             ),
-
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                'Location: Damascus , Al Mazzeh , Power Store Building',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                ),
+              ),
+            ),
           ],
         ),
       ),

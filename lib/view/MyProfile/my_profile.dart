@@ -5,6 +5,8 @@ import 'package:power_store1/view/MyProfile/Privacy/privacy_policy.dart';
 import 'package:power_store1/view/MyProfile/Terms/terms_conditions.dart';
 import '../../constants/Buttons/custom_buttons.dart';
 import '../../constants/SizeConfig/size_config.dart';
+import '../../main.dart';
+import '../splash/splash_view.dart';
 import 'Edit Profile/edit_profile.dart';
 import 'About Power Store/about_power_store.dart';
 import 'Call Us/call_us.dart';
@@ -41,9 +43,16 @@ class MyProfile extends StatelessWidget {
                 Positioned(
                   top: 15,
                   left: 305,
-                  child: CircleAvatar(
-                    radius: 35,
-                    backgroundImage: AssetImage('assets/images/avatar.png'),
+                  child: GestureDetector(
+                    onTap: (){
+                      Get.to(() => EditProfile(),
+                          duration: Duration(milliseconds: 500),
+                          transition: Transition.rightToLeft);
+                    },
+                    child: CircleAvatar(
+                      radius: 35,
+                      backgroundImage: AssetImage('assets/images/avatar.png'),
+                    ),
                   ),
                 ),
                 Positioned(
@@ -401,41 +410,66 @@ class MyProfile extends StatelessWidget {
                 SizedBox(
                   height: 5,
                 ),
-                Stack(
-                  children: [
-                    Center(
-                      child: Container(
-                        width: 400,
-                        height: 45,
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(20),
+                GestureDetector(
+                  onTap: (){
+                    Get.defaultDialog(
+                      title:"Warning!",
+                      middleText: "Are you sure you want to log out?",
+                      textConfirm: "Log out",
+                      onConfirm:(){
+                        sharedprefs.setBool('page_after_splash',false);
+                        Get.offAll(SplashView());
+                      },
+                      textCancel: "Cancel",
+                    );
+                  },
+                  child: Stack(
+                    children: [
+                      Center(
+                        child: Container(
+                          width: 400,
+                          height: 45,
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      top: 12,
-                      left: 180,
-                      child: Text(
-                        'Log Out',
-                        style: TextStyle(
-                          color: Colors.red,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20,
+                      Positioned(
+                        top: 12,
+                        left: 180,
+                        child: Text(
+                          'Log Out',
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      left: 240,
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.logout_outlined,
-                          color: Colors.red,
+                      Positioned(
+                        left: 240,
+                        child: IconButton(
+                          onPressed: () {
+                            Get.defaultDialog(
+                              title:"Warning!",
+                              middleText: "Are you sure you want to log out?",
+                              textConfirm: "Log out",
+                              onConfirm:(){
+                                sharedprefs.setBool('page_after_splash',false);
+                                Get.offAll(SplashView());
+                              },
+                              textCancel: "Cancel",
+                            );
+                          },
+                          icon: Icon(
+                            Icons.logout_outlined,
+                            color: Colors.red,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
