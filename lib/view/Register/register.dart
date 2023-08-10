@@ -8,9 +8,9 @@ import 'package:power_store1/constants/TextFeild/custom_text_field.dart';
 import 'package:power_store1/view/login/login_view.dart';
 
 var firstNameController = TextEditingController();
-var lastNameController = TextEditingController();
+//var lastNameController = TextEditingController();
 var password = TextEditingController();
-var confirmPassword = TextEditingController();
+//var confirmPassword = TextEditingController();
 var phoneNum = TextEditingController();
 var email = TextEditingController();
 var location = TextEditingController();
@@ -32,7 +32,7 @@ class _RegisterState extends State<Register> {
           child: Center(
             child: Padding(
               padding: const EdgeInsets.only(
-                top: 50,
+                top: 130,
               ),
               child: Column(
                 children: [
@@ -44,7 +44,7 @@ class _RegisterState extends State<Register> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 40,),
                   Container(
                     width: 400,
                     child: CustomTextField(
@@ -53,17 +53,7 @@ class _RegisterState extends State<Register> {
                         onChanged: (value) {},
                         controller: firstNameController,
                         validator: (value) {},
-                        text: "First name:"),
-                  ),
-                  Container(
-                    width: 400,
-                    child: CustomTextField(
-                        inputType: TextInputType.name,
-                        prefix: Icons.person,
-                        onChanged: (value) {},
-                        controller: lastNameController,
-                        validator: (value) {},
-                        text: "Last name:"),
+                        text: "Name:"),
                   ),
                   Container(
                     width: 400,
@@ -77,19 +67,7 @@ class _RegisterState extends State<Register> {
                         validator: (value) {},
                         text: "Choose your Password:"),
                   ),
-                  Container(
-                    width: 400,
-                    child: CustomTextField(
-                      inputType: TextInputType.visiblePassword,
-                      isPassword: showPassword,
-                      maxLines: 1,
-                      prefix: Icons.lock,
-                      onChanged: (value) {},
-                      controller: confirmPassword,
-                      validator: (value) {},
-                      text: "Confirm your password:",
-                    ),
-                  ),
+
                   Container(
                     width: 400,
                     child: CustomTextField(

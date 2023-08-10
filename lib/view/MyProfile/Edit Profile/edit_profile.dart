@@ -88,17 +88,9 @@ class EditProfile extends StatelessWidget {
               inputType: TextInputType.text,
               onChanged: (String value) {},
               validator: (value) {},
-              text: 'First Name:',
+              text: 'Name:',
             ),
-            SizedBox(
-              height: 10,
-            ),
-            EditName(
-              inputType: TextInputType.text,
-              onChanged: (String value) {},
-              validator: (value) {},
-              text: 'Second Name:',
-            ),
+
             SizedBox(
               height: 10,
             ),

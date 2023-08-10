@@ -8,7 +8,7 @@ class Members extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar(Title: 'Members'),
+      appBar: myAppBar(Title: 'Search Members'),
 
     );
   }
