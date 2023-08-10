@@ -1,20 +1,20 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:power_store1/main.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:http/http.dart' as http;
+import 'package:power_store1/controller/bottom_nav_bar.dart';
 import 'package:power_store1/view/HomePage/Bottom%20Nav%20Bar/bottom_navigation_bar.dart';
-import 'package:power_store1/view/register/register.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../constants/Buttons/custom_buttons.dart';
 import '../../../constants/Buttons/default_button.dart';
 import '../../../constants/ClickableImage/clickable_image.dart';
 import '../../../constants/Colors and Fonts/colors.dart';
 import '../../../constants/TextFeild/custom_text_field.dart';
-import '../../../controller/login_controller.dart';
+import '../../../main.dart';
 import '../../HomePage/home_page.dart';
 import '../../OnBoarding/on_boarding_view.dart';
+import '../../Register/register.dart';
 import 'login_item.dart';
 
 class LoginBody extends StatefulWidget {
@@ -28,11 +28,49 @@ class LoginBody extends StatefulWidget {
 }
 
 class _LoginBodyState extends State<LoginBody> {
-  var emailcont = TextEditingController();
-  var passlcont = TextEditingController();
   var formkey = GlobalKey<FormState>();
   bool password = true;
+  var emailcont = TextEditingController();
+  var passlcont = TextEditingController();
   bool moveToPage = false;
+
+  Future<void> login() async {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(child: CircularProgressIndicator());
+        });
+    try {
+      var response = await http.post(
+        Uri.parse(Endpoints.login),
+        body: {
+          'email': emailcont.text,
+          'password': passlcont.text,
+        },
+      );
+
+      if (response.statusCode == 200) {
+        // Login successful
+        var token = response
+            .body; // Assuming the token is returned in the response body
+        setState(() {
+          moveToPage = true;
+        });
+      } else {
+        // Login failed
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Login failed')),
+        );
+      }
+    } catch (e) {
+      // Error occurred during API request
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('An error occurred')),
+      );
+    }
+    Navigator.of(context).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +85,7 @@ class _LoginBodyState extends State<LoginBody> {
                 height: 35,
                 color: PurpleColor,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
@@ -63,10 +101,10 @@ class _LoginBodyState extends State<LoginBody> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               LoginItem(
                 text: '     Enter Your Email : ',
               ),
@@ -80,13 +118,13 @@ class _LoginBodyState extends State<LoginBody> {
                 },
                 validator: (Value) {
                   if (Value.isEmpty) {
-                    return "please enter your Email Adress";
+                    return "please enter your Email Address";
                   }
                   return null;
                 },
-                text: 'Email Adress',
+                text: 'Email Address',
               ),
-              SizedBox(height: 60),
+              const SizedBox(height: 60),
               LoginItem(
                 text: '     Enter Your Password : ',
               ),
@@ -102,8 +140,6 @@ class _LoginBodyState extends State<LoginBody> {
                   setState(() {
                     password = !password;
                   });
-
-                  ;
                 },
                 onChanged: (value) {
                   print(value);
@@ -117,46 +153,48 @@ class _LoginBodyState extends State<LoginBody> {
                 text: 'Password',
                 controller: passlcont,
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               CustomGeneralButton(
-                  onTap: () {
-                    if (formkey.currentState!.validate()) {
-                      print(emailcont.text);
-                      print(passlcont.text);
-                      moveToPage = true;
-                      sharedprefs.setBool("page_after_splash", true);
-                    }
-                    // fetchData();
-                    if (moveToPage)
-                      Get.offAll(
-                            () => bottomNavigationBarScreen(),
-                        transition: Transition.rightToLeft,
-                        duration: Duration(milliseconds: 500),
-                      );
+                onTap: () async {
+                  if (formkey.currentState!.validate()) {
+                    await login();
+                    sharedprefs.setBool("page_after_splash", true);
+                  }
+                  if (moveToPage) {
+                    Get.offAll(
+                      () => const bottomNavigationBarScreen(),
+                      transition: Transition.rightToLeft,
+                      duration: const Duration(milliseconds: 500),
+                    );
                     moveToPage = false;
-                  },
-                  text: 'Sign In'),
+                  }
+                },
+                text: 'Sign In',
+              ),
               Padding(
                 padding: const EdgeInsets.only(top: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Don't you have an Account?"),
-                    TextButton(onPressed: (){
-                      Get.to(Register());
-                    }, child: Text("Register now!!")),
+                    const Text("Don't you have an Account?"),
+                    TextButton(
+                      onPressed: () {
+                        Get.to(const Register());
+                      },
+                      child: const Text("Register now!!"),
+                    ),
                   ],
                 ),
               ),
-              SizedBox(height: 80),
-              Text(
+              const SizedBox(height: 80),
+              const Text(
                 'Complete With Google',
                 style: TextStyle(
                   color: PurpleColor,
                   fontSize: 20,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               ClickableImage(

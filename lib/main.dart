@@ -8,6 +8,15 @@ import 'package:power_store1/view/Seller/Navigation%20Bar/bottom_nav_seller.dart
 import 'package:power_store1/view/splash/splash_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
+class Endpoints {
+  static const baseUrl = 'http://192.168.123.17:8000';
+  static const register = '$baseUrl/api/signup';
+  static const login = '$baseUrl/api/login';
+  static const logout = '$baseUrl/api/logout';
+}
+
+
 late SharedPreferences sharedprefs;
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +32,7 @@ class PowerStore extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       //home: bottomNavigationBarSellerScreen(),
-      home: bottomNavigationBarScreen(),
+      home: SplashView(),
       //home: Register(),
       //home: AdminProfile(),
       //home: SplashView(),

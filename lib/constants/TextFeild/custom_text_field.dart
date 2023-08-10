@@ -45,6 +45,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       padding: const EdgeInsets.all(14),
       child:
       TextFormField(
+        controller: widget.controller,
         validator: widget.validator,
         keyboardType: widget.inputType,
         obscureText: widget.isPassword!,
