@@ -58,15 +58,7 @@ class EditAdmin extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            EditName(
-              inputType: TextInputType.text,
-              onChanged: (String value) {},
-              validator: (value) {},
-              text: 'Second Name:',
-            ),
-            SizedBox(
-              height: 10,
-            ),
+
             EditName(
               inputType: TextInputType.phone,
               onChanged: (String value) {},
