@@ -169,9 +169,7 @@ class _RegisterState extends State<Register> {
                           }
                           if(moveToPage){
                             Get.to(()=>LoginView());
-
                           }
-
                         },
                       ),
                     )
