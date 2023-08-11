@@ -53,7 +53,7 @@ class EditAdmin extends StatelessWidget {
               inputType: TextInputType.text,
               onChanged: (String value) {},
               validator: (value) {},
-              text: 'First Name:',
+              text: 'Name:',
             ),
             SizedBox(
               height: 10,
