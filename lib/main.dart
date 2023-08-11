@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 class Endpoints {
-  static const baseUrl = 'http://192.168.123.17:8000';
+  static const baseUrl = 'http://192.168.1.104:8000';
   static const register = '$baseUrl/api/signup';
   static const login = '$baseUrl/api/login';
   static const logout = '$baseUrl/api/logout';
@@ -23,6 +23,7 @@ void main() async{
    sharedprefs = await SharedPreferences.getInstance();
   runApp(PowerStore());
 }
+//rrf
 
 class PowerStore extends StatelessWidget {
   PowerStore({Key? key});

@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import 'package:power_store1/controller/bottom_nav_bar.dart';
-import 'package:power_store1/view/HomePage/Bottom%20Nav%20Bar/bottom_navigation_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../constants/Buttons/custom_buttons.dart';
 import '../../../constants/Buttons/default_button.dart';
@@ -12,10 +10,12 @@ import '../../../constants/ClickableImage/clickable_image.dart';
 import '../../../constants/Colors and Fonts/colors.dart';
 import '../../../constants/TextFeild/custom_text_field.dart';
 import '../../../main.dart';
+import '../../HomePage/Bottom Nav Bar/bottom_navigation_bar.dart';
 import '../../HomePage/home_page.dart';
 import '../../OnBoarding/on_boarding_view.dart';
 import '../../Register/register.dart';
 import 'login_item.dart';
+
 
 class LoginBody extends StatefulWidget {
   final TextInputType? inputType;
@@ -35,11 +35,10 @@ class _LoginBodyState extends State<LoginBody> {
   bool moveToPage = false;
 
   Future<void> login() async {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(child: CircularProgressIndicator());
-        });
+
+    showDialog(context: context, builder: (context) {
+      return const Center(child: CircularProgressIndicator());
+    });
     try {
       var response = await http.post(
         Uri.parse(Endpoints.login),
@@ -48,12 +47,12 @@ class _LoginBodyState extends State<LoginBody> {
           'password': passlcont.text,
         },
       );
-
+      print(response.statusCode);
       if (response.statusCode == 200) {
         // Login successful
-        var token = response
-            .body; // Assuming the token is returned in the response body
+        var token = response.body; // Assuming the token is returned in the response body
         setState(() {
+
           moveToPage = true;
         });
       } else {
@@ -68,8 +67,10 @@ class _LoginBodyState extends State<LoginBody> {
         const SnackBar(content: Text('An error occurred')),
       );
     }
+
     Navigator.of(context).pop();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +123,7 @@ class _LoginBodyState extends State<LoginBody> {
                   }
                   return null;
                 },
-                text: 'Email Address',
+                hText: 'Email Address',
               ),
               const SizedBox(height: 60),
               LoginItem(
@@ -150,7 +151,7 @@ class _LoginBodyState extends State<LoginBody> {
                   }
                   return null;
                 },
-                text: 'Password',
+                hText: 'Password',
                 controller: passlcont,
               ),
               const SizedBox(height: 50),
@@ -158,11 +159,14 @@ class _LoginBodyState extends State<LoginBody> {
                 onTap: () async {
                   if (formkey.currentState!.validate()) {
                     await login();
+                    print(passlcont.text);
+                    print(emailcont.text);
                     sharedprefs.setBool("page_after_splash", true);
+
                   }
                   if (moveToPage) {
                     Get.offAll(
-                      () => const bottomNavigationBarScreen(),
+                          () => bottomNavigationBarScreen(),
                       transition: Transition.rightToLeft,
                       duration: const Duration(milliseconds: 500),
                     );

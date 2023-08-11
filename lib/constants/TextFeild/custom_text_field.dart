@@ -12,14 +12,15 @@ class CustomTextField extends StatefulWidget {
   final int? maxLines;
   final TextEditingController controller;
   final FormFieldValidator validator;
-  final String text;
+  final String? lText;
+  final String hText;
   final ValueChanged<String> onChanged;
   final IconData? suffix;
   final bool? isPassword;
   final Function? pss;
 
 
-    CustomTextField({
+  CustomTextField({
     required this.inputType,
     required this.prefix,
     this.suffix,
@@ -28,7 +29,8 @@ class CustomTextField extends StatefulWidget {
     this.maxLines,
     required this.controller,
     required this.validator,
-    required this.text,
+    required this.hText,
+    this.lText,
     this.isPassword=false,
     this.pss,
 
@@ -42,42 +44,42 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(14),
-      child:
-      TextFormField(
-        controller: widget.controller,
-        validator: widget.validator,
-        keyboardType: widget.inputType,
-        obscureText: widget.isPassword!,
-        onChanged: widget.onChanged,
-        onSaved: widget.onSaved,
-        maxLines: widget.maxLines,
-        decoration: InputDecoration(
-          labelText: widget.text,
-          hintText: widget.text,
-          prefixIcon: Icon(widget.prefix),
-          errorStyle: TextStyle(color: Colors.purple),
-          suffixIcon:
+        padding: const EdgeInsets.all(14),
+        child:
+        TextFormField(
+          controller: widget.controller,
+          validator: widget.validator,
+          keyboardType: widget.inputType,
+          obscureText: widget.isPassword!,
+          onChanged: widget.onChanged,
+          onSaved: widget.onSaved,
+          maxLines: widget.maxLines,
+          decoration: InputDecoration(
+            labelText: widget.lText,
+            hintText: widget.hText,
+            prefixIcon: Icon(widget.prefix),
+            errorStyle: TextStyle(color: Colors.purple),
+            suffixIcon:
 
-          IconButton(
-            icon:
+            IconButton(
+              icon:
 
               Icon(widget.suffix),
-            onPressed: (){
-              widget.pss!();
-            },
-          ),
-          filled: true,
-          fillColor: Colors.transparent,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(24),
+              onPressed: (){
+                widget.pss!();
+              },
             ),
-            borderSide: BorderSide(
-              color: PurpleColor,
+            filled: true,
+            fillColor: Colors.transparent,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(24),
+              ),
+              borderSide: BorderSide(
+                color: PurpleColor,
+              ),
             ),
           ),
-        ),
-    ));
+        ));
   }
 }
