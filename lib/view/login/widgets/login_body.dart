@@ -40,8 +40,9 @@ class _LoginBodyState extends State<LoginBody> {
       return const Center(child: CircularProgressIndicator());
     });
     try {
-      var response = await http.post(
+      final response = await http.post(
         Uri.parse(Endpoints.login),
+        headers: {'Accept' : 'application/json'},
         body: {
           'email': emailcont.text,
           'password': passlcont.text,
@@ -49,18 +50,31 @@ class _LoginBodyState extends State<LoginBody> {
       );
       print(response.statusCode);
       if (response.statusCode == 200) {
+        final responseData = jsonDecode(response.body);
+        final token = responseData['token'];
+        sharedprefs.setString('token', token);
         // Login successful
-        var token = response.body; // Assuming the token is returned in the response body
-        setState(() {
+        // final token = jsonDecode(response.body);
+        // sharedprefs.setInt("id",token['user']['id'] );
 
+
+
+        // Assuming the token is returned in the response body
+        setState(() {
           moveToPage = true;
+          sharedprefs.setBool("page_after_splash", true);
+
+
         });
-      } else {
+      }
+
+      else {
         // Login failed
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Login failed')),
         );
       }
+
     } catch (e) {
       // Error occurred during API request
       ScaffoldMessenger.of(context).showSnackBar(
@@ -161,7 +175,7 @@ class _LoginBodyState extends State<LoginBody> {
                     await login();
                     print(passlcont.text);
                     print(emailcont.text);
-                    sharedprefs.setBool("page_after_splash", true);
+
 
                   }
                   if (moveToPage) {

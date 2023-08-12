@@ -14,6 +14,7 @@ class Endpoints {
   static const register = '$baseUrl/api/signup';
   static const login = '$baseUrl/api/login';
   static const logout = '$baseUrl/api/logout';
+  static const profile = '$baseUrl/api/profile';
 }
 
 

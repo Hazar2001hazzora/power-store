@@ -12,10 +12,52 @@ import 'About Power Store/about_power_store.dart';
 import 'Call Us/call_us.dart';
 import 'Location/my_location.dart';
 import 'Orders/my_orders.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class MyProfile extends StatelessWidget {
+class MyProfile extends StatefulWidget {
   const MyProfile({Key? key}) : super(key: key);
 
+  @override
+  State<MyProfile> createState() => _MyProfileState();
+}
+
+class _MyProfileState extends State<MyProfile> {
+
+
+
+  Future<void> fetchProfileData() async {
+    final url = Uri.parse(Endpoints.profile);
+    final token = sharedprefs.getString('token');
+    Map<String, dynamic> _profileData = {};
+    final response = await http.get(
+      url,
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      _profileData = json.decode(response.body);
+      print(_profileData);
+      sharedprefs.setString('name', _profileData['data']['name']);
+      sharedprefs.setString('phone', _profileData['data']['phone']);
+      print(sharedprefs.getString('phone'));
+
+    } else {
+      throw Exception('Failed to fetch profile data');
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    fetchProfileData();
+
+  }
+Object? name=sharedprefs.getString('name');
+  Object? phone=sharedprefs.getString('phone');
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -64,8 +106,7 @@ class MyProfile extends StatelessWidget {
                           duration: Duration(milliseconds: 500),
                           transition: Transition.rightToLeft);
                     },
-                    child: Text(
-                      'Hazar Zarefa',
+                    child: Text(name.toString(),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 17,
@@ -82,8 +123,7 @@ class MyProfile extends StatelessWidget {
                           duration: Duration(milliseconds: 500),
                           transition: Transition.rightToLeft);
                     },
-                    child: Text(
-                      '+963 938367851',
+                    child: Text(phone.toString(),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 17,
