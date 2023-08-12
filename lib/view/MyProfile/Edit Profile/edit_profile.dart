@@ -103,6 +103,12 @@ class EditProfile extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
+            EditName(
+              inputType: TextInputType.emailAddress,
+              onChanged: (String value) {},
+              validator: (value) {},
+              text: 'Email:',
+            ),
             LocationTextFeild(
               inputType: TextInputType.text,
               onChanged: (String value) {},

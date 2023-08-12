@@ -1,19 +1,19 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import 'package:power_store1/constants/Colors%20and%20Fonts/colors.dart';
 
 import '../../../constants/Buttons/custom_buttons.dart';
 import '../../../constants/SizeConfig/size_config.dart';
 import '../my_profile.dart';
-import 'orders_view.dart';
 
-class MyOrders extends StatelessWidget {
-  const MyOrders({Key? key}) : super(key: key);
+class FullProfile extends StatelessWidget {
+  const FullProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -34,7 +34,7 @@ class MyOrders extends StatelessWidget {
                   top: SizeConfig.defaultSize! * 2.5,
                   left: SizeConfig.defaultSize!*26,
                   child: Text(
-                    ':  My Orders ',
+                    ':  My Profile ',
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w800,
@@ -51,31 +51,12 @@ class MyOrders extends StatelessWidget {
                 ),
               ],
             ),
-            OrdersView(
-              image: '',
-              Title: '',
-              Discription: '',
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            OrdersView(
-              image: '',
-              Title: '',
-              Discription: '',
-            ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 20,),
 
-            OrdersView(
-              image: '',
-              Title: '',
-              Discription: '',
-            ),
           ],
         ),
       ),
+
     );
   }
 }

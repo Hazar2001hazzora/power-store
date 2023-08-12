@@ -10,6 +10,7 @@ import '../splash/splash_view.dart';
 import 'Edit Profile/edit_profile.dart';
 import 'About Power Store/about_power_store.dart';
 import 'Call Us/call_us.dart';
+import 'Full Profile/my_full_profile.dart';
 import 'Location/my_location.dart';
 import 'Orders/my_orders.dart';
 import 'package:http/http.dart' as http;
@@ -137,7 +138,56 @@ Object? name=sharedprefs.getString('name');
               height: 15,
             ),
             /*******/
+            GestureDetector(
+              onTap: (){
+                Get.to(() => FullProfile(),
+                    duration: Duration(milliseconds: 500),
+                    transition: Transition.rightToLeft);
+              },
+              child: Stack(
+                children: [
+                  Center(
+                    child: Container(
+                      width: 400,
+                      height: 45,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 12,
+                    left: 285,
+                    child: Text(
+                      'My Profile',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 10,
+                    left: 377,
+                    child: Icon(
+                      Icons.person,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Arrow(
+                    onTap: () {
+                      Get.to(() => MyLocation(),
+                          duration: Duration(milliseconds: 500),
+                          transition: Transition.rightToLeft);
+                    },
+                  ),
+                ],
+              ),
+            ),
             /*******/
+           SizedBox(height: 5,),
             Column(
               children: [
                 GestureDetector(

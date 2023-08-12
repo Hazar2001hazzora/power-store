@@ -14,32 +14,7 @@ class Products extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(height: 20,),
-          Stack(
-            children: [
-              Center(
-                child: Container(
-                  height: 40,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    color: PurpleColor,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 150,
-                top: 10,
-                child: Text(
-                  'Add  Products: ',
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ],
-          ),
+
         ],
       ),
 

@@ -33,11 +33,10 @@ class PowerStore extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      //home: bottomNavigationBarSellerScreen(),
-      home: SplashView(),
+      home: bottomNavigationBarSellerScreen(),
+      //home: SplashView(),
       //home: Register(),
       //home: AdminProfile(),
-      //home: SplashView(),
       theme: ThemeData(
         primarySwatch: Colors.purple, // Set the accent color
       ),
