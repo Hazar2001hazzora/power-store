@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -5,7 +6,10 @@ import 'package:power_store1/view/MyProfile/Privacy/privacy_policy.dart';
 import 'package:power_store1/view/MyProfile/Terms/terms_conditions.dart';
 import '../../constants/Buttons/custom_buttons.dart';
 import '../../constants/SizeConfig/size_config.dart';
+import '../../localrepo.dart';
+import '../../locator.dart';
 import '../../main.dart';
+import '../../services/logout-ser.dart';
 import '../splash/splash_view.dart';
 import 'Edit Profile/edit_profile.dart';
 import 'About Power Store/about_power_store.dart';
@@ -13,9 +17,38 @@ import 'Call Us/call_us.dart';
 import 'Full Profile/my_full_profile.dart';
 import 'Location/my_location.dart';
 import 'Orders/my_orders.dart';
+import 'package:http/http.dart' as http;
 
-class MyProfile extends StatelessWidget {
+class MyProfile extends StatefulWidget {
   const MyProfile({Key? key}) : super(key: key);
+
+  @override
+  State<MyProfile> createState() => _MyProfileState();
+}
+
+class _MyProfileState extends State<MyProfile> {
+  final url = Uri.parse(Endpoints.profile);
+  Map<String, dynamic> _profileData = {};
+
+  var token = locator.get<LocalRepo>().token;
+
+  Future<void> fetchProfileData() async {
+    final response = await http.get(
+      url,
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token '
+      },
+    );
+    print(response.statusCode);
+    print(token);
+    if (response.statusCode == 200) {
+      _profileData = json.decode(response.body);
+      print(_profileData['data']['name']);
+    } else {
+      throw Exception('Failed to fetch profile data');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +78,8 @@ class MyProfile extends StatelessWidget {
                   top: 15,
                   left: 305,
                   child: GestureDetector(
-                    onTap: (){
+                    onTap: () async {
+                      await fetchProfileData();
                       Get.to(() => EditProfile(),
                           duration: Duration(milliseconds: 500),
                           transition: Transition.rightToLeft);
@@ -60,7 +94,7 @@ class MyProfile extends StatelessWidget {
                   top: 100,
                   left: 294,
                   child: GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Get.to(() => EditProfile(),
                           duration: Duration(milliseconds: 500),
                           transition: Transition.rightToLeft);
@@ -78,7 +112,7 @@ class MyProfile extends StatelessWidget {
                   top: 130,
                   left: 280,
                   child: GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Get.to(() => EditProfile(),
                           duration: Duration(milliseconds: 500),
                           transition: Transition.rightToLeft);
@@ -99,7 +133,7 @@ class MyProfile extends StatelessWidget {
             ),
             /*******/
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 Get.to(() => FullProfile(),
                     duration: Duration(milliseconds: 500),
                     transition: Transition.rightToLeft);
@@ -147,11 +181,13 @@ class MyProfile extends StatelessWidget {
               ),
             ),
             /*******/
-           SizedBox(height: 5,),
+            SizedBox(
+              height: 5,
+            ),
             Column(
               children: [
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Get.to(() => MyOrders(),
                         duration: Duration(milliseconds: 500),
                         transition: Transition.rightToLeft);
@@ -204,7 +240,7 @@ class MyProfile extends StatelessWidget {
                   height: 5,
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Get.to(() => MyLocation(),
                         duration: Duration(milliseconds: 500),
                         transition: Transition.rightToLeft);
@@ -257,7 +293,7 @@ class MyProfile extends StatelessWidget {
                   height: 5,
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Get.to(() => TermsConditions(),
                         duration: Duration(milliseconds: 500),
                         transition: Transition.rightToLeft);
@@ -308,7 +344,7 @@ class MyProfile extends StatelessWidget {
                   height: 5,
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Get.to(() => About(),
                         duration: Duration(milliseconds: 500),
                         transition: Transition.rightToLeft);
@@ -359,7 +395,7 @@ class MyProfile extends StatelessWidget {
                   height: 5,
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Get.to(() => PrivacyPolicy(),
                         duration: Duration(milliseconds: 500),
                         transition: Transition.rightToLeft);
@@ -410,7 +446,7 @@ class MyProfile extends StatelessWidget {
                   height: 5,
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Get.to(() => CallUs(),
                         duration: Duration(milliseconds: 500),
                         transition: Transition.rightToLeft);
@@ -461,13 +497,20 @@ class MyProfile extends StatelessWidget {
                   height: 5,
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Get.defaultDialog(
-                      title:"Warning!",
+                      title: "Warning!",
                       middleText: "Are you sure you want to log out?",
                       textConfirm: "Log out",
-                      onConfirm:(){
-                        sharedprefs.setBool('page_after_splash',false);
+                      onConfirm: () async {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            });
+                        await logoutUser();
+                        sharedprefs.setBool('page_after_splash', false);
                         Get.offAll(SplashView());
                       },
                       textCancel: "Cancel",
@@ -502,11 +545,11 @@ class MyProfile extends StatelessWidget {
                         child: IconButton(
                           onPressed: () {
                             Get.defaultDialog(
-                              title:"Warning!",
+                              title: "Warning!",
                               middleText: "Are you sure you want to log out?",
                               textConfirm: "Log out",
-                              onConfirm:(){
-                                sharedprefs.setBool('page_after_splash',false);
+                              onConfirm: () {
+                                sharedprefs.setBool('page_after_splash', false);
                                 Get.offAll(SplashView());
                               },
                               textCancel: "Cancel",

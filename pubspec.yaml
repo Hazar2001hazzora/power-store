@@ -42,7 +42,9 @@ dependencies:
   font_awesome_flutter:
   http:
   google_nav_bar:
-  shared_preferences:
+  shared_preferences: ^2.2.0
+  get_it: ^7.6.0
+
 
 
 

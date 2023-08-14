@@ -7,23 +7,25 @@ import 'package:power_store1/view/Register/register.dart';
 import 'package:power_store1/view/Seller/Navigation%20Bar/bottom_nav_seller.dart';
 import 'package:power_store1/view/splash/splash_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:get_it/get_it.dart';
+import 'locator.dart';
 
 class Endpoints {
-  static const baseUrl = 'http://192.168.1.104:8000';
+  static const baseUrl  = 'http://192.168.1.105:8000';
   static const register = '$baseUrl/api/signup';
-  static const login = '$baseUrl/api/login';
-  static const logout = '$baseUrl/api/logout';
+  static const login    = '$baseUrl/api/login';
+  static const logout   = '$baseUrl/api/logout';
+  static const profile  = '$baseUrl/api/profile';
 }
-
 
 late SharedPreferences sharedprefs;
-void main() async{
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   sharedprefs = await SharedPreferences.getInstance();
+  sharedprefs = await SharedPreferences.getInstance();
+  setUp();
   runApp(PowerStore());
 }
-//rrf
 
 class PowerStore extends StatelessWidget {
   PowerStore({Key? key});
@@ -32,10 +34,10 @@ class PowerStore extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: bottomNavigationBarSellerScreen(),
+      //home: bottomNavigationBarSellerScreen(),
       //home: SplashView(),
       //home: Register(),
-      //home: AdminProfile(),
+      home: AdminProfile(),
       theme: ThemeData(
         primarySwatch: Colors.purple, // Set the accent color
       ),

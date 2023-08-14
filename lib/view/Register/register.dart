@@ -6,12 +6,10 @@ import 'package:power_store1/constants/TextFeild/custom_text_field.dart';
 import 'package:power_store1/constants/TextFeild/edit_profile.dart';
 import 'package:http/http.dart' as http;
 import 'package:power_store1/main.dart';
-
 import '../login/login_view.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
-
   @override
   State<Register> createState() => _RegisterState();
 }

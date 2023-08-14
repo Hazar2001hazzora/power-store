@@ -1,21 +1,18 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 import '../../../constants/Buttons/custom_buttons.dart';
-import '../../../constants/Buttons/default_button.dart';
 import '../../../constants/ClickableImage/clickable_image.dart';
 import '../../../constants/Colors and Fonts/colors.dart';
 import '../../../constants/TextFeild/custom_text_field.dart';
+import '../../../localrepo.dart';
+import '../../../locator.dart';
 import '../../../main.dart';
 import '../../HomePage/Bottom Nav Bar/bottom_navigation_bar.dart';
-import '../../HomePage/home_page.dart';
-import '../../OnBoarding/on_boarding_view.dart';
 import '../../Register/register.dart';
 import 'login_item.dart';
-
 
 class LoginBody extends StatefulWidget {
   final TextInputType? inputType;
@@ -35,24 +32,27 @@ class _LoginBodyState extends State<LoginBody> {
   bool moveToPage = false;
 
   Future<void> login() async {
-
-    showDialog(context: context, builder: (context) {
-      return const Center(child: CircularProgressIndicator());
-    });
+    showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(child: CircularProgressIndicator());
+        });
     try {
       var response = await http.post(
         Uri.parse(Endpoints.login),
         body: {
-          'email': emailcont.text,
+          'email'   : emailcont.text,
           'password': passlcont.text,
         },
       );
       print(response.statusCode);
+      var js = jsonDecode(response.body);
       if (response.statusCode == 200) {
         // Login successful
-        var token = response.body; // Assuming the token is returned in the response body
+        String? token = js['token'];
+        print(token);
+        locator.get<LocalRepo>().vartoken(token!);
         setState(() {
-
           moveToPage = true;
         });
       } else {
@@ -70,7 +70,6 @@ class _LoginBodyState extends State<LoginBody> {
 
     Navigator.of(context).pop();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -162,11 +161,10 @@ class _LoginBodyState extends State<LoginBody> {
                     print(passlcont.text);
                     print(emailcont.text);
                     sharedprefs.setBool("page_after_splash", true);
-
                   }
                   if (moveToPage) {
                     Get.offAll(
-                          () => bottomNavigationBarScreen(),
+                      () => bottomNavigationBarScreen(),
                       transition: Transition.rightToLeft,
                       duration: const Duration(milliseconds: 500),
                     );
