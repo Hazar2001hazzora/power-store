@@ -22,7 +22,7 @@ class CustomTextField extends StatefulWidget {
 
   CustomTextField({
     required this.inputType,
-    required this.prefix,
+    this.prefix,
     this.suffix,
     this.onSaved,
     required this.onChanged,

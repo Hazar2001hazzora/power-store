@@ -8,13 +8,16 @@ import 'package:power_store1/view/Seller/Navigation%20Bar/bottom_nav_seller.dart
 import 'package:power_store1/view/splash/splash_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'controller/imageProfile_controller.dart';
+
 
 class Endpoints {
-  static const baseUrl = 'http://192.168.1.104:8000';
+  static const baseUrl = 'http://192.168.50.59:8000';
   static const register = '$baseUrl/api/signup';
   static const login = '$baseUrl/api/login';
   static const logout = '$baseUrl/api/logout';
   static const profile = '$baseUrl/api/profile';
+  static const editProfile = '$baseUrl/api/user/1';
 }
 
 
@@ -33,7 +36,7 @@ class PowerStore extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: bottomNavigationBarSellerScreen(),
+      home: SplashView(),
       //home: SplashView(),
       //home: Register(),
       //home: AdminProfile(),

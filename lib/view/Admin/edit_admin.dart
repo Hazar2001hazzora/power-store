@@ -7,7 +7,12 @@ import '../../constants/TextFeild/edit_profile.dart';
 import '../widgets/appBar/app_Bar.dart';
 
 class EditAdmin extends StatelessWidget {
-  const EditAdmin({Key? key}) : super(key: key);
+  EditAdmin({Key? key}) : super(key: key);
+  var nameController = TextEditingController();
+  var passwordController = TextEditingController();
+  var phoneNumController = TextEditingController();
+  var emailController = TextEditingController();
+  var locationController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +55,7 @@ class EditAdmin extends StatelessWidget {
               height: 20,
             ),
             EditName(
+              controller:nameController ,
               inputType: TextInputType.text,
               onChanged: (String value) {},
               validator: (value) {},
@@ -60,6 +66,7 @@ class EditAdmin extends StatelessWidget {
             ),
 
             EditName(
+              controller: phoneNumController,
               inputType: TextInputType.phone,
               onChanged: (String value) {},
               validator: (value) {},
@@ -69,6 +76,7 @@ class EditAdmin extends StatelessWidget {
               height: 10,
             ),
             EditName(
+              controller: emailController,
               inputType: TextInputType.emailAddress,
               onChanged: (String value) {},
               validator: (value) {},

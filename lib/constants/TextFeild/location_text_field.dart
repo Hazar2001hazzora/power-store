@@ -5,6 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 import '../Colors and Fonts/colors.dart';
 
 class LocationTextFeild extends StatefulWidget {
+  final TextEditingController controller;
   final TextInputType? inputType;
   final ValueSetter? onSaved;
   final int? maxLines;
@@ -17,6 +18,7 @@ class LocationTextFeild extends StatefulWidget {
 
 
   LocationTextFeild({
+    required this.controller,
     required this.inputType,
     this.onSaved,
     required this.onChanged,
@@ -38,6 +40,7 @@ class _LocationTextFeild extends State<LocationTextFeild> {
         padding: const EdgeInsets.all(14),
         child:
         TextFormField(
+          controller: widget.controller,
           validator: widget.validator,
           keyboardType: widget.inputType,
           onChanged: widget.onChanged,

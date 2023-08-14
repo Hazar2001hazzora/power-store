@@ -1,6 +1,9 @@
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:power_store1/controller/imageProfile_controller.dart';
 import 'package:power_store1/view/MyProfile/Privacy/privacy_policy.dart';
 import 'package:power_store1/view/MyProfile/Terms/terms_conditions.dart';
 import '../../constants/Buttons/custom_buttons.dart';
@@ -22,43 +25,10 @@ class MyProfile extends StatefulWidget {
   @override
   State<MyProfile> createState() => _MyProfileState();
 }
-
 class _MyProfileState extends State<MyProfile> {
 
-
-
-  Future<void> fetchProfileData() async {
-    final url = Uri.parse(Endpoints.profile);
-    final token = sharedprefs.getString('token');
-    Map<String, dynamic> _profileData = {};
-    final response = await http.get(
-      url,
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer $token',
-      },
-    );
-
-    if (response.statusCode == 200) {
-      _profileData = json.decode(response.body);
-      print(_profileData);
-      sharedprefs.setString('name', _profileData['data']['name']);
-      sharedprefs.setString('phone', _profileData['data']['phone']);
-      print(sharedprefs.getString('phone'));
-
-    } else {
-      throw Exception('Failed to fetch profile data');
-    }
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    fetchProfileData();
-
-  }
 Object? name=sharedprefs.getString('name');
-  Object? phone=sharedprefs.getString('phone');
+Object? phone=sharedprefs.getString('phone');
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -94,7 +64,7 @@ Object? name=sharedprefs.getString('name');
                     },
                     child: CircleAvatar(
                       radius: 35,
-                      backgroundImage: AssetImage('assets/images/avatar.png'),
+                      backgroundImage: FileImage(sharedprefs.getString('image')as File)
                     ),
                   ),
                 ),

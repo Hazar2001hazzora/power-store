@@ -9,7 +9,10 @@ import '../../../constants/TextFeild/location_text_field.dart';
 import '../my_profile.dart';
 
 class MyLocation extends StatelessWidget {
-  const MyLocation({Key? key}) : super(key: key);
+
+   MyLocation({Key? key}) : super(key: key);
+   var locationController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +109,7 @@ class MyLocation extends StatelessWidget {
               height: 10,
             ),
             LocationTextFeild(
+              controller:locationController,
               inputType: TextInputType.text,
               onChanged: (String value) {},
               validator: (value) {},
